@@ -38,12 +38,19 @@ public class BootsSrapData implements CommandLineRunner {
         authorRepository.save(rod);
         bookRepository.save(noEJB);
 
-        Publisher publisher = new Publisher("EXER","Ioannina,home,2,34");
+        Publisher publisher = new Publisher();
+        publisher.setCity("ioannina");
+        publisher.setState("epirus");
+        publisher.setName("errr");
+        publisher.getBooks().add(noEJB);
+        publisher.getBooks().add(ddd);
+        noEJB.setPublisher(publisher);
         publisherRepository.save(publisher);
 
 
         System.out.println("Bootstrap started");
         System.out.println("Number of books "+bookRepository.count());
         System.out.println("Number of Available publishers: "+publisherRepository.count());
+        System.out.println("Publisher Number of Books: " + publisher.getBooks().size());
     }
 }
